@@ -1,7 +1,14 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Droplet, Home, Leaf, Sun, Truck } from "lucide-react";
+import { Award, Droplet, Home, Leaf, Sun, Truck, Briefcase, Package, Shield, FileText } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface ServiceCardProps {
   title: string;
@@ -11,7 +18,7 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon }) => {
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl h-full">
       <CardHeader className="pb-3 pt-6 border-b border-gray-100">
         <div className="flex items-center gap-3">
           <div className="bg-orange-50 p-3 rounded-xl text-lksb-orange">
@@ -37,9 +44,19 @@ const Services: React.FC = () => {
       icon: <Home className="h-5 w-5" />
     },
     {
-      title: "Gestion d'Espaces Verts",
-      description: "Création et entretien d'espaces verts professionnels adaptés à vos besoins.",
+      title: "Création et Gestion des Espaces Verts",
+      description: "Conception, aménagement et entretien d'espaces verts pour embellir votre environnement professionnel ou résidentiel.",
       icon: <Leaf className="h-5 w-5" />
+    },
+    {
+      title: "Négociant",
+      description: "Services de négociation et d'intermédiaire pour vos projets commerciaux et industriels.",
+      icon: <Briefcase className="h-5 w-5" />
+    },
+    {
+      title: "Achat et Vente des Matériaux",
+      description: "Fourniture de matériaux de construction de haute qualité pour tous vos projets.",
+      icon: <Package className="h-5 w-5" />
     },
     {
       title: "Énergie Renouvelable",
@@ -55,6 +72,16 @@ const Services: React.FC = () => {
       title: "Génie Civil",
       description: "Services de génie civil et infrastructure pour vos projets de construction.",
       icon: <Award className="h-5 w-5" />
+    },
+    {
+      title: "Installation des Pompes Solaires",
+      description: "Installation de systèmes de pompage solaire efficaces pour l'irrigation et l'approvisionnement en eau.",
+      icon: <Shield className="h-5 w-5" />
+    },
+    {
+      title: "Étude des Projets d'Irrigation",
+      description: "Conception et mise en œuvre de systèmes d'irrigation optimisés pour une gestion efficace de l'eau.",
+      icon: <FileText className="h-5 w-5" />
     },
     {
       title: "Location d'Engins",
@@ -74,15 +101,32 @@ const Services: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn fadeIn-delay-1">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-            />
-          ))}
+        <div className="mx-auto max-w-6xl px-8 animate-fadeIn fadeIn-delay-1">
+          <Carousel 
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {services.map((service, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <ServiceCard
+                      title={service.title}
+                      description={service.description}
+                      icon={service.icon}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center mt-6 gap-2">
+              <CarouselPrevious className="relative static left-0 translate-y-0 mr-2" />
+              <CarouselNext className="relative static right-0 translate-y-0" />
+            </div>
+          </Carousel>
         </div>
       </div>
     </section>
