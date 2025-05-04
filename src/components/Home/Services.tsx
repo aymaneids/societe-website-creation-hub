@@ -1,21 +1,31 @@
 
 import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Award, Droplet, Home, Leaf, Sun, Truck } from "lucide-react";
 
 interface ServiceCardProps {
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border-t-4 border-lksb-orange">
-      <div className="bg-orange-50 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-        <span className="text-3xl text-lksb-orange">{icon}</span>
-      </div>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl">
+      <CardHeader className="pb-3 pt-6 border-b border-gray-100">
+        <div className="flex items-center gap-3">
+          <div className="bg-orange-50 p-3 rounded-xl text-lksb-orange">
+            {icon}
+          </div>
+          <CardTitle className="text-lg font-bold">{title}</CardTitle>
+        </div>
+      </CardHeader>
+      <CardContent className="pt-5">
+        <CardDescription className="text-gray-700 text-sm">
+          {description}
+        </CardDescription>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -24,32 +34,32 @@ const Services: React.FC = () => {
     {
       title: "Travaux de Construction",
       description: "Construction de bâtiments résidentiels et commerciaux avec des matériaux de qualité.",
-      icon: "🏗️"
+      icon: <Home className="h-5 w-5" />
     },
     {
       title: "Gestion d'Espaces Verts",
       description: "Création et entretien d'espaces verts professionnels adaptés à vos besoins.",
-      icon: "🌱"
+      icon: <Leaf className="h-5 w-5" />
     },
     {
       title: "Énergie Renouvelable",
       description: "Solutions d'énergie renouvelable pour réduire votre empreinte écologique.",
-      icon: "☀️"
+      icon: <Sun className="h-5 w-5" />
     },
     {
       title: "Irrigation",
       description: "Étude et réalisation de projets d'irrigation efficaces et durables.",
-      icon: "💧"
+      icon: <Droplet className="h-5 w-5" />
     },
     {
       title: "Génie Civil",
       description: "Services de génie civil et infrastructure pour vos projets de construction.",
-      icon: "🔧"
+      icon: <Award className="h-5 w-5" />
     },
     {
       title: "Location d'Engins",
       description: "Location de matériel et d'engins de chantier pour vos travaux.",
-      icon: "🚜"
+      icon: <Truck className="h-5 w-5" />
     }
   ];
 

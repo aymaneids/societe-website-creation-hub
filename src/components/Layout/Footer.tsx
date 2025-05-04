@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <img src="/lovable-uploads/e3d68825-fb98-4da3-9a74-534ee670cc0c.png" alt="LKSB Logo" className="h-12" />
+              <img src="/lovable-uploads/d42890a4-e8f0-46af-a5a7-d16dcf7d6571.png" alt="LKSB Logo" className="h-16" />
             </Link>
             <p className="text-gray-400 mb-4">
               LKSB SARL - Société à responsabilité limitée

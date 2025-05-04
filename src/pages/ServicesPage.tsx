@@ -1,22 +1,28 @@
 
 import React from 'react';
 import MainLayout from '../components/Layout/MainLayout';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Award, Bookmark, Briefcase, Droplet, FileText, Home, Leaf, Package, Shield, Sun, Truck } from 'lucide-react';
 
-const Service: React.FC<{ title: string; description: string; icon: string }> = ({
+const Service: React.FC<{ title: string; description: string; icon: React.ReactNode }> = ({
   title,
   description,
   icon,
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <div className="p-6">
-        <div className="bg-orange-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-          <span className="text-3xl text-lksb-orange">{icon}</span>
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl">
+      <CardHeader className="pb-3 pt-6 border-b border-gray-100">
+        <div className="flex items-center gap-3">
+          <div className="bg-orange-50 p-3 rounded-xl text-lksb-orange">
+            {icon}
+          </div>
+          <h3 className="text-lg font-bold">{title}</h3>
         </div>
-        <h3 className="text-xl font-bold mb-3">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </div>
-    </div>
+      </CardHeader>
+      <CardContent className="pt-5">
+        <p className="text-gray-700 text-sm">{description}</p>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -25,52 +31,52 @@ const ServicesPage: React.FC = () => {
     {
       title: "Travaux Divers De Construction",
       description: "Réalisation de projets de construction résidentielle et commerciale avec une attention particulière aux détails et à la qualité des matériaux utilisés.",
-      icon: "🏗️",
+      icon: <Home className="h-5 w-5" />,
     },
     {
       title: "Création et Gestion des Espaces Verts",
       description: "Conception, aménagement et entretien d'espaces verts pour embellir votre environnement professionnel ou résidentiel.",
-      icon: "🌱",
+      icon: <Leaf className="h-5 w-5" />,
     },
     {
       title: "Négociant",
       description: "Services de négociation et d'intermédiaire pour vos projets commerciaux et industriels.",
-      icon: "🤝",
+      icon: <Briefcase className="h-5 w-5" />,
     },
     {
       title: "Achat et Vente des Matériaux de Construction",
       description: "Fourniture de matériaux de construction de haute qualité pour tous vos projets, avec un service de conseil pour vous guider dans vos choix.",
-      icon: "🧱",
+      icon: <Package className="h-5 w-5" />,
     },
     {
       title: "Location d'Engins",
       description: "Location de matériel et d'engins de chantier adaptés à vos besoins spécifiques pour faciliter vos travaux.",
-      icon: "🚜",
+      icon: <Truck className="h-5 w-5" />,
     },
     {
       title: "Génie Civil et Corps d'État",
       description: "Expertise en génie civil pour la réalisation de vos projets d'infrastructure et de construction.",
-      icon: "🔧",
+      icon: <Award className="h-5 w-5" />,
     },
     {
       title: "Étude, Aménagement et Entretien des Espaces Verts",
       description: "Services complets d'étude, d'aménagement et d'entretien pour créer des espaces verts durables et esthétiques.",
-      icon: "🌿",
+      icon: <FileText className="h-5 w-5" />,
     },
     {
       title: "Énergie Renouvelable",
       description: "Solutions d'énergie renouvelable pour réduire votre empreinte écologique et vos coûts énergétiques sur le long terme.",
-      icon: "♻️",
+      icon: <Sun className="h-5 w-5" />,
     },
     {
       title: "Installation des Pompes Solaires",
       description: "Installation de systèmes de pompage solaire efficaces pour l'irrigation et l'approvisionnement en eau.",
-      icon: "☀️",
+      icon: <Shield className="h-5 w-5" />,
     },
     {
       title: "Étude et Réalisation des Projets d'Irrigation",
       description: "Conception et mise en œuvre de systèmes d'irrigation optimisés pour une gestion efficace de l'eau.",
-      icon: "💧",
+      icon: <Droplet className="h-5 w-5" />,
     },
   ];
 

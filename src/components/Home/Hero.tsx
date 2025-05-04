@@ -35,9 +35,9 @@ const Hero: React.FC = () => {
           </div>
           <div className="animate-fadeIn fadeIn-delay-1">
             <img 
-              src="/lovable-uploads/242c8f80-35b6-40cd-b73d-5a779739c539.png" 
+              src="/lovable-uploads/8c12a560-dc84-4266-9af6-74e216117497.png" 
               alt="LKSB Logo" 
-              className="max-h-64 mx-auto object-contain"
+              className="max-h-80 mx-auto object-contain"
             />
           </div>
         </div>
