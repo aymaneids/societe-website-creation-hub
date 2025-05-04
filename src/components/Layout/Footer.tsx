@@ -1,17 +1,14 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
-
 const Footer: React.FC = () => {
-  return (
-    <footer className="bg-gray-900 text-white">
+  return <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <img src="/lovable-uploads/d42890a4-e8f0-46af-a5a7-d16dcf7d6571.png" alt="LKSB Logo" className="h-16" />
+              <img alt="LKSB Logo" className="h-16" src="/lovable-uploads/f12d3bfe-4e4f-4034-8270-b776ecd54318.png" />
             </Link>
             <p className="text-gray-400 mb-4">
               LKSB SARL - Société à responsabilité limitée
@@ -90,8 +87,6 @@ const Footer: React.FC = () => {
           <p>&copy; {new Date().getFullYear()} LKSB SARL. Tous droits réservés.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
