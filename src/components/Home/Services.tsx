@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Droplet, Home, Leaf, Sun, Truck, Briefcase, Package, Shield, FileText } from "lucide-react";
 import {
@@ -37,6 +37,35 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon }) =
 };
 
 const Services: React.FC = () => {
+  const [api, setApi] = useState<any>(null);
+  const [current, setCurrent] = useState(0);
+  
+  // Auto sliding functionality
+  useEffect(() => {
+    if (!api) return;
+    
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 5000); // Change slide every 5 seconds
+    
+    return () => clearInterval(interval);
+  }, [api]);
+
+  // Update current slide index when slide changes
+  useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
   const services = [
     {
       title: "Travaux de Construction",
@@ -108,11 +137,12 @@ const Services: React.FC = () => {
               loop: true,
             }}
             className="w-full"
+            setApi={setApi}
           >
             <CarouselContent className="-ml-4">
               {services.map((service, index) => (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
+                  <div className="p-1 h-full">
                     <ServiceCard
                       title={service.title}
                       description={service.description}
@@ -122,9 +152,25 @@ const Services: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
+            
+            {/* Navigation buttons */}
             <div className="flex justify-center mt-6 gap-2">
               <CarouselPrevious className="relative static left-0 translate-y-0 mr-2" />
               <CarouselNext className="relative static right-0 translate-y-0" />
+            </div>
+            
+            {/* Indicator dots */}
+            <div className="flex justify-center mt-4 gap-2">
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    current === index ? "bg-lksb-orange" : "bg-gray-300"
+                  }`}
+                  onClick={() => api?.scrollTo(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </Carousel>
         </div>
