@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   return <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img alt="LKSB Logo" className="h-12" src="/lovable-uploads/7b1f1dbb-23f1-437e-b328-11eea37bb360.png" />
+          <img alt="LKSB Logo" className="h-12" src="/lovable-uploads/c680d51d-065a-484d-9340-ef73315cbe36.png" />
         </Link>
 
         {/* Desktop Navigation */}
