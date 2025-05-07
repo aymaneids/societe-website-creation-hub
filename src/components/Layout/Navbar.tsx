@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -23,6 +24,9 @@ const Navbar: React.FC = () => {
           <Link to="/contact" className="text-gray-800 hover:text-lksb-orange transition-colors font-medium">
             Contact
           </Link>
+          <Link to="/dashboard" className="text-gray-800 hover:text-lksb-orange transition-colors font-medium">
+            Dashboard
+          </Link>
         </nav>
 
         {/* Mobile menu button */}
@@ -45,6 +49,9 @@ const Navbar: React.FC = () => {
             </Link>
             <Link to="/contact" className="text-gray-800 hover:text-lksb-orange transition-colors px-2 py-1" onClick={() => setIsOpen(false)}>
               Contact
+            </Link>
+            <Link to="/dashboard" className="text-gray-800 hover:text-lksb-orange transition-colors px-2 py-1" onClick={() => setIsOpen(false)}>
+              Dashboard
             </Link>
           </nav>
         </div>}
